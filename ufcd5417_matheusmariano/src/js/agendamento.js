@@ -1,17 +1,17 @@
 function addAgendamento() {
     let id_cliente = $('#selectCliente').val();
-    let id_Agendamento = $('#selectAgendamento').val();
+    let id_voo = $('#selectVoo').val();
     let qtd_passageiros = $('#qtdPassageiros').val();
     if (!checkSelect(id_cliente)){
         alerta("Selecione um Avião!", "Atenção!", 'error', 'btn btn-danger');
-    } else if (!checkSelect(id_Agendamento)){
-        alerta("Selecione um Destino!", "Atenção!", 'error', 'btn btn-danger');
+    } else if (!checkSelect(id_voo)){
+        alerta("Selecione um Voo!", "Atenção!", 'error', 'btn btn-danger');
     } else if (qtd_passageiros<1){
         alerta("Quantidade de passageiros não pode ser inferior a um!", "Atenção!", 'error', 'btn btn-danger');
     } else {
         let dados = new FormData();
         dados.append('id_cliente', id_cliente);
-        dados.append("id_Agendamento", id_Agendamento);
+        dados.append("id_voo", id_voo);
         dados.append("qtd_passageiros", qtd_passageiros);
         dados.append("valor_total", 0);
         dados.append("op", 1);
