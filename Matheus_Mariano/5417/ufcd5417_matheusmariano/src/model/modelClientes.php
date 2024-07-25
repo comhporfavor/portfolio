@@ -1,5 +1,5 @@
 <?php
-
+// teste de la base de datos
 require_once 'connection.php';
 
 class Cliente {
