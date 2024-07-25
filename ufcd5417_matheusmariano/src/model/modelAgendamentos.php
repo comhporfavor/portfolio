@@ -4,28 +4,30 @@ require_once 'connection.php';
 
 class Agendamento {
 
-    function addAgendamento($id_cliente, $id_voo, $qtd_passageiros, $valor_total) {
-        global $conn;
-        $msg = "";
-        $validaAgenda = $this->validaAgendamento($id_cliente, $id_voo);
-        $validaAssentos = $this->validaAssentos($id_voo, $qtd_passageiros);
-        if(!$validaAgenda){
-            $msg = "Este voo já possui um agendamento para este cliente.";
-        } else if (!$validaAssentos){
-            $msg = "Número de assentos indisponível.";
-        } else {
-            $sql = "INSERT INTO agendamento (id_cliente, id_voo, qtd_passageiros, valor_total) 
+function addAgendamento($id_cliente, $id_voo, $qtd_passageiros, $valor_total) {
+    global $conn;
+    $msg = "";
+    $validaAgenda = $this->validaAgendamento($id_cliente, $id_voo);
+    $validaAssentos = $this->validaAssentos($id_voo, $qtd_passageiros);
+    if (!$validaAgenda) {
+        $msg = "Este voo já possui um agendamento para este cliente.";
+    } else if (!$validaAssentos) {
+        $msg = "Número de assentos indisponível.";
+    } else {
+        $sql = "INSERT INTO agendamento (id_cliente, id_voo, qtd_passageiros, valor_total) 
                 VALUES ('$id_cliente', '$id_voo', '$qtd_passageiros', '$valor_total')"; 
-            if ($conn->query($sql) === TRUE) {
-                $id_agendamento = $conn->insert_id;
-                $this->atribuiLugares($id_agendamento, $id_voo, $qtd_passageiros);
-            } else {
-                $msg = "Error: " . $sql . "<br>" . $conn->error;
-            }
-        }     
-        $conn->close();
-        return $msg;
+        if ($conn->query($sql) === TRUE) {
+            $id_agendamento = $conn->insert_id;
+            $this->atribuiLugares($id_agendamento, $id_voo, $qtd_passageiros);
+            $msg = "Agendamento registrado com sucesso.";
+        } else {
+            $msg = "Error: " . $sql . "<br>" . $conn->error;
+        }
     }
+    $conn->close();
+    return $msg;
+}
+
 
     function listarAgendamentos($id_voo){
         global $conn;
@@ -101,46 +103,54 @@ class Agendamento {
         return $flag;
     }
 
-    function validaAssentos($id_voo, $qtd_passageiros) {
-        global $conn;
-        $flag= true;
-        $count = "SELECT COUNT(id) AS total_assentos, voo.id AS esteVoo FROM passageiros, agendamento, voo
+   function validaAssentos($id_voo, $qtd_passageiros) {
+    global $conn;
+    $flag = true;
+    $sql = "SELECT COUNT(passageiros.id) AS total_ocupados
+            FROM passageiros
+            JOIN agendamento ON passageiros.id_agendamento = agendamento.id
             WHERE agendamento.id_voo = $id_voo;";
-        $result = $conn->query($sql);
+    $result = $conn->query($sql);
+    $maxLugar = "SELECT MAX(id) AS capacidade FROM lugares";
+    $maxLugarDisp = $conn->query($maxLugar);
+    if ($result && $maxLugarDisp) {
         $row = $result->fetch_assoc();
-        if (30-$row['total_assentos'] < $qtd_passageiros) {
+        $lugares = $maxLugarDisp->fetch_assoc();   
+        if ($lugares['capacidade'] - $row['total_ocupados'] < $qtd_passageiros) {
             $flag = false;
         }
-        $conn->close();
-        return $flag;
+    } else {
+        $flag = false;
     }
+    return $flag;
+}
 
     function atribuiLugares($id_agendamento, $id_voo, $qtd_passageiros) {
         global $conn;
-        $getCliente = "SELECT cliente.nome, cliente.idade FROM cliente, agendamento 
-            WHERE cliente.nif = agendamento.id_cliente AND agendamento.id='$id_agendamento';";
+        $getCliente = "SELECT cliente.nome, cliente.idade 
+                       FROM cliente 
+                       JOIN agendamento ON cliente.nif = agendamento.id_cliente 
+                       WHERE agendamento.id = '$id_agendamento'";
         $result = $conn->query($getCliente);
         $row = $result->fetch_assoc();
-        $getLugaresDisp = "SELECT MAX(id_lugar) AS lugarDisp 
-            FROM passageiros, agendamento 
-            WHERE agendamento.id_voo = '$id_voo' AND agendamento.id = $id_agendamento;";
-        $lugarDisp = $conn->query($getLugaresDisp);
-        $rowLugarDisp = $lugarDisp->fetch_assoc();
-        for ( (if($rowLugarDisp['lugarDisp']=1){
-                $i=1;
-            } else {
-                $i=$rowLugarDisp['lugarDisp']+1;
-            }); $i<=($rowLugarDisp['lugarDisp']+$qtd_passageiros); $i++) {
-                $sql = "INSERT INTO passageiros (id_agendamento, nome, idade, id_lugar) 
-                VALUES ('$id_agendamento', $row['nome'], $row['idade'], '$i')";
-                $insert = $conn->query($sql);
-                if ($insert === FALSE) {
-                    echo "Error: ". $sql. "<br>". $conn->error;
-                    break;
-                }
+        $getUltAtrib = "SELECT MAX(id_lugar) AS lugarDisp 
+                           FROM passageiros 
+                           JOIN agendamento ON passageiros.id_agendamento = agendamento.id 
+                           WHERE agendamento.id_voo = '$id_voo'";
+        $lugarDisp = $conn->query($getUltAtrib);
+        $contador = $lugarDisp->fetch_assoc();
+        $inicio = $contador['lugarDisp'] ? $contador['lugarDisp'] + 1 : 1;
+        for ($i = $inicio; $i < $inicio + $qtd_passageiros; $i++) {
+            $sql = "INSERT INTO passageiros (id_agendamento, nome, idade, id_lugar) 
+                    VALUES ('$id_agendamento', '{$row['nome']}', '{$row['idade']}', '$i')";
+            $atribui = $conn->query($sql);
+            if ($atribui === FALSE) {
+                echo "Error: " . $sql . "<br>" . $conn->error;
+                break;
+            }
         }
-
     }
+
     
 }
 
