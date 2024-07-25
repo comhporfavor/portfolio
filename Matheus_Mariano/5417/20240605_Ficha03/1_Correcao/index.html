@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ficha 3 - 5415</title>
+  <script src="src/js/jquery.js"></script>
+  <script src="src/js/datatable.js"></script>
+  <script src="src/js/function.js"></script>
+  <script src="src/js/sweetalert.js"></script>
+  <script src="src/js/bootstrap.js"></script>
+  <link rel="stylesheet" href="src/css/bootstrap.css">
+  <link rel="stylesheet" href="src/css/sweetalert.css">
+  <link rel="stylesheet" href="src/css/animate.css">
+  <link rel="stylesheet" href="src/css/datatable.css">
+</head>
+
+<body>
+  <div class="container">
+    <h1>Ex1</h1>
+    <form class="row g-3">
+    <div class="col-md-12">
+      <label for="nomeparticipante" class="form-label">Nome</label>
+      <input type="text" class="form-control" id="nome">
+    </div>
+    <div class="col-md-6">
+      <label for="idade" class="form-label">Idade</label>
+      <input type="number" class="form-control" id="idade">
+    </div>
+
+    <select id="workshop">
+      <option value = "-1">Escolha uma opção</option>
+      <option value = "HTML">HTML</option>
+      <option value = "PHP">PHP</option>
+    </select>
+    <div class="col-12">
+      <button type="button" class="btn btn-primary" onclick="registaParticipante()">Registar</button>
+      <button type="button" class="btn btn-primary" onclick="listagemParticipantes()">listar</button>
+    </div>
+  </form>
+  </div>
+
+
+
+  <select id="workshop1" onchange="filtraTabela(this.value)">
+    <option value = "-1">Escolha uma opção</option>
+    <option value = "HTML">HTML</option>
+    <option value = "PHP">PHP</option>
+  </select>
+
+  <div class="container" id="tableParticipantes">
+
+   
+
+  </div>
+
+  
+
+
+  
+
+</body>
+
+</html>

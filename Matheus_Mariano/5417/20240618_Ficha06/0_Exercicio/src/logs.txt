@@ -1,0 +1,10 @@
+../imagens/_logotipo20240619120223.png
+../imagens/_logotipo20240619120346.png
+../imagens/_logotipo20240619120513.png
+../imagens/fotoJog20240619121004.png
+../imagens/fotoJog20240619121236.jpg
+../imagens/fotoJog20240619121246.jpg
+../imagens/_logotipo20240624092359.png
+../imagens/fotoJog20240624093204.jfif
+../imagens/fotoJog20240624093412.jfif
+../imagens/fotoJog20240624110824.jpg

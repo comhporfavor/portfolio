@@ -1,0 +1,20 @@
+.pVermelho{
+    color: red;
+    text-align: right;
+}
+
+.pCinza{
+    color: lightgray;
+}
+
+.pagAtiva{
+    color: blueviolet;
+}
+
+.cartaz{
+    width: 200px;
+    height:200px;
+    border: 1px solid black;
+    margin: 5px;
+    padding: 5px;
+}

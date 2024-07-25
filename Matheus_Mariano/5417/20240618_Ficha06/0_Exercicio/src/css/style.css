@@ -1,0 +1,17 @@
+.pVermelho{
+    color: red;
+    text-align: right;
+}
+
+.pCinza{
+    color: lightgray;
+}
+
+.pagAtiva{
+    color: blueviolet;
+}
+
+.logoClube{
+    width: 100px;
+    height: 100px;
+}

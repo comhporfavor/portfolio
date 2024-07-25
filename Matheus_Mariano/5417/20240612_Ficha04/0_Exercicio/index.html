@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ficha 4 - 5417</title>
+  <script src="src/js/jquery.js"></script>
+  <script src="src/js/datatable.js"></script>
+  <script src="src/js/function.js"></script>
+  <script src="src/js/sweetalert.js"></script>
+  <script src="src/js/bootstrap.js"></script>
+  <link rel="stylesheet" href="src/css/bootstrap.css">
+  <link rel="stylesheet" href="src/css/sweetalert.css">
+  <link rel="stylesheet" href="src/css/animate.css">
+  <link rel="stylesheet" href="src/css/datatable.css">
+</head>
+
+<body>
+  <div class="container">
+    <h3>Adicionar Tipos de Produtos</h3>
+    <form class="row g-3">
+      <div class="col-md-12">
+        <label for="novoTipo" class="form-label">Tipo de Produto:</label>
+        <input type="text" class="form-control" id="novoTipo">
+      </div> 
+      <br>
+      <div class="col-md-3">
+        <button type="button" class="btn btn-primary" onclick="addTipo()">Adicionar</button>
+      </div>
+      
+    </form>
+
+    <br> <br>
+
+    <h3>Registro de produtos</h3>
+      <form class="row g-3">
+      <div class="col-md-6">
+        <label for="nomeProduto" class="form-label">Nome do Produto:</label>
+        <input type="text" class="form-control" id="nomeProduto">
+      </div>
+      <div class="col-md-6">
+        <select class="mt-4half align-self-xxl-stretch" name="tipoProduto" id="tipoProduto">Tipo:</select>
+      </div>
+      <div class="col-md-6">
+        <label for="descProduto" class="form-label">Descrição</label>
+        <input type="text" class="form-control" id="descProduto">
+      </div>
+      <div class="col-md-6">
+        <label for="precoProduto" class="form-label">Preço</label>
+        <input type="text" class="form-control" id="precoProduto">
+      </div>
+      <div class="col-12">
+        <button type="button" class="btn btn-primary" onclick="addProduto()">Adicionar</button>
+        <button type="button" class="btn btn-primary" onclick="listarProdutos()">Listar</button>
+      </div>
+    </form>
+  </div>
+
+  <br>
+
+  <div class="container">
+    <table class='table table-striped invisible' id='dataTProdutos'>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Nome</th>
+          <th>Tipo</th>
+          <th>Descrição</th>
+          <th>Preço</th>
+          <th>Remover</th>
+          <th>Alterar</th>
+        </tr>
+      </thead>
+      <tbody  id="tableProdutos">
+
+      </tbody>
+    </table>  
+  </div>
+
+  
+   <!-- Modal -->
+<div class="modal fade modal-xl" id="editProd" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Edição de Produto</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form class="row g-3">
+          <div class="col-md-6">
+            <label for="nomeEdit" class="form-label">Nome</label>
+            <input type="text" class="form-control" id="nomeEdit">
+          </div>
+          <div class="col-md-6">
+            <select class="mt-5" name="editTipoProduto" id="editTipoProduto">Tipo:</select>
+          </div>
+          <div class="col-md-6">
+            <label for="moradaEdit" class="form-label">Descrição</label>
+            <input type="text" class="form-control" id="descEdit">
+          </div>
+          <div class="col-md-6">
+            <label for="telefoneEdit" class="form-label">Preço</label>
+            <input type="tel" class="form-control" id="precoEdit">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+        <button type="button" class="btn btn-success" id ="btnGuardaEdit">Guardar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+</body>
+
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ficha 6 - 5417</title>
+  <script src="src/js/jquery.js"></script>
+  <script src="src/js/datatable.js"></script>
+  <script src="src/js/function.js"></script>
+  <script src="src/js/sweetalert.js"></script>
+  <script src="src/js/bootstrap.js"></script>
+  <link rel="stylesheet" href="src/css/bootstrap.css">
+  <link rel="stylesheet" href="src/css/style.css">
+  <link rel="stylesheet" href="src/css/sweetalert.css">
+  <link rel="stylesheet" href="src/css/animate.css">
+  <link rel="stylesheet" href="src/css/datatable.css">
+</head>
+
+<header>
+  <div>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <div class="container-fluid bg-dark">
+        <div class="col-md-2">
+          <h3 class="pCinza">Ficha 06</h3>
+        </div>
+        <div class="col-md-4">
+          <a href="index.html">Home</a> 
+          <a href="clubes.html" class="pagAtiva">Clubes</a>
+          <a href="jogadores.html">Jogadores</a> 
+        </div>
+        <div class="col-md-6 mt-3">
+          <p class="pVermelho">Matheus Mariano</p>
+        </div>     
+      </div>
+    </nav>
+  </div>
+</header>
+
+<body>
+  <div class="container">
+  
+    <div>
+      <h3>Registrar Clubes</h3>
+      <form>
+        <div class="form-group">
+          <label for="nomeClube">Nome do Clube</label>
+          <input type="text" class="form-control" id="nomeClube" placeholder="Digite o nome do clube" required>
+        </div>
+        <br>
+        <div class="form-group">
+          <label for="localClube">Localidade</label>
+          <input type="text" class="form-control" id="localClube" placeholder="Digite a localidade" required>
+        </div>
+        <br>
+        <div class="form-group">
+          <label for="emailClube">Email de Contato</label>
+          <input type="email" class="form-control" id="emailClube" placeholder="Digite o email de contato" required>
+        </div>
+        <br>
+        <div class="form-group">
+          <label for="anoFund">Ano de Fundação</label>
+          <input type="number" class="form-control" id="anoFund" placeholder="Digite o ano de fundação" required>
+        </div>
+        <br>
+        <div class="form-group">
+          <label for="telClube">Contato de Telefone</label>
+          <input type="tel" class="form-control" id="telClube" placeholder="Digite o contato de telefone" required>
+        </div>
+        <br>
+        <div class="form-group">
+          <label for="logotipo">Logotipo</label>
+          <input type="file" class="form-control-file" id="logotipo" required>
+        </div>
+        <br>
+        <button type="button" class="btn btn-primary" onclick="addClube()">Registrar</button>
+      </form>
+    </div>  
+
+  </div>    
+
+</body>
+
+</html>

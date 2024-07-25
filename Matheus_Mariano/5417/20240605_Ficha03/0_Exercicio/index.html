@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>5417 - Ficha 03</title>
+  <script src="src/js/jquery.js"></script>
+  <script src="src/js/datatable.js"></script>
+  <script src="src/js/function.js"></script>
+  <script src="src/js/sweetalert.js"></script>
+  <script src="src/js/bootstrap.js"></script>
+  <link rel="stylesheet" href="src/css/bootstrap.css">
+  <link rel="stylesheet" href="src/css/sweetalert.css">
+  <link rel="stylesheet" href="src/css/animate.css">
+  <link rel="stylesheet" href="src/css/datatable.css">
+</head>
+
+<body>
+  <div class="container">
+    <h3>Ex1</h3>
+    <div class="container mt-5">
+      <h2 class="mb-4">Registo de Participantes</h2>
+      <form>
+          <div class="form-group">
+              <label for="nif">Número de Identificação Fiscal (NIF)</label>
+              <input type="text" class="form-control" id="nifParticipante" placeholder="Introduza o NIF">
+          </div>
+          <div class="form-group">
+              <label for="nome">Nome</label>
+              <input type="text" class="form-control" id="nomeParticipante" placeholder="Introduza o nome">
+          </div>
+          <div class="form-group">
+              <label for="morada">Morada</label>
+              <input type="text" class="form-control" id="moradaParticipante" placeholder="Introduza a morada">
+          </div>
+          <div class="form-group">
+              <label for="idade">Idade</label>
+              <input type="number" class="form-control" id="idadeParticipante" placeholder="Introduza a idade">
+          </div>
+          <div class="form-group">
+              <label for="telefone">Telefone</label>
+              <input type="text" class="form-control" id="telefoneParticipante" placeholder="Introduza o telefone">
+          </div>
+          <div class="form-group">
+              <label for="workshop">Workshop</label>
+              <select class="form-control" id="workshop">
+                  <option value="HTML">HTML</option>
+                  <option value="Java">Java</option>
+                  <option value="C#">C#</option>
+                  <option value="PHP">PHP</option>
+              </select>
+          </div>
+          <br>
+          <button type="button" class="btn btn-primary" onclick="registraParticipante()">Registar</button>
+      </form>
+  </div>
+
+  <br>
+
+  <div class="container">
+    </form>
+    <br>
+    <h5>Lista de Participantes</h5>
+    <button type="button" class="btn btn-success mt-4" onclick="listarParticipantes()">Listar</button>
+    <br>
+    <br>
+    <table class="table table-striped table-bordered table-hover" id="dataTParticipantes">
+      <thead>
+        <tr>
+          <th scope="col">NIF</th>
+          <th scope="col">Nome</th>
+          <th scope="col">Morada</th> 
+          <th scope="col">Idade</th> 
+          <th scope="col">Telefone</th> 
+          <th scope="col">Workshop</th>
+        </tr>
+      </thead>
+      <tbody id="listaParticipantes">
+      </tbody>
+    </table>
+  </div>
+
+  <br>
+
+  <div class="container">
+  </form>
+  <br>
+  <h5>Listar Participantes por Workshop</h5>
+  <label for="workshop">Workshop</label>
+              <select class="form-control" id="filtroWorkshop" onchange="filtrarPorWorkshop()">
+                  <option value="HTML">HTML</option>
+                  <option value="Java">Java</option>
+                  <option value="C#">C#</option>
+                  <option value="PHP">PHP</option>
+              </select>
+  <br>
+  <table class="table table-striped table-bordered table-hover">
+    <thead>
+      <tr>
+        <th scope="col">NIF</th>
+        <th scope="col">Nome</th>
+        <th scope="col">Morada</th> 
+        <th scope="col">Idade</th> 
+        <th scope="col">Telefone</th> 
+      </tr>
+    </thead>
+    <tbody id="listaFiltradaParticipantes">
+    </tbody>
+  </table>
+</div>
+
+<br>
+
+
+</body>
+
+</html>

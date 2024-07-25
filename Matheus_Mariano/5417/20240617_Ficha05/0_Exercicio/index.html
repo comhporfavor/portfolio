@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ficha 5 - 5417</title>
+  <script src="src/js/jquery.js"></script>
+  <script src="src/js/datatable.js"></script>
+  <script src="src/js/function.js"></script>
+  <script src="src/js/sweetalert.js"></script>
+  <script src="src/js/bootstrap.js"></script>
+  <link rel="stylesheet" href="src/css/bootstrap.css">
+  <link rel="stylesheet" href="src/css/sweetalert.css">
+  <link rel="stylesheet" href="src/css/animate.css">
+  <link rel="stylesheet" href="src/css/datatable.css">
+</head>
+
+<body>
+  <div class="container">
+    <h3>Adicionar Clientes</h3>
+    <div class="col-8">
+      <button type="button" class="btn btn-primary mt-4half" onclick="mostrarModalCliente()">Adicionar</button>
+      <button type="button" class="btn btn-primary mt-4half" onclick="listarClientes()">Listar</button>
+    </div>
+   <!-- Modal -->
+   <div class="modal fade modal-xl" id="modalAddCliente" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Adicionar Cliente</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form class="row g-3">
+            <div class="col-md-4">
+              <label for="nifCliente" class="form-label">NIF:</label>
+              <input type="number" class="form-control" id="nifCliente">
+            </div>
+            <div class="col-md-8">
+              <label for="nomeCliente" class="form-label">Nome do Cliente:</label>
+              <input type="texte" class="form-control" id="nomeCliente">
+            </div>
+            <div class="col-md-6">
+              <label for="localCliente" class="form-label">Localidade</label>
+              <input type="text" class="form-control" id="localCliente">
+            </div>
+            <div class="col-md-6">
+              <label for="emailCliente" class="form-label">Email</label>
+              <input type="email" class="form-control" id="emailCliente">
+            </div>
+            <div class="col-md-4">
+              <label for="telCliente" class="form-label">Telefone:</label>
+              <input type="number" class="form-control" id="telCliente">
+            </div>
+          </form>      
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+          <button type="button" class="btn btn-success"  onclick="addCliente()">Guardar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <br> <br>
+
+    <h3>Registrar Projetos</h3>
+    <div class="col-6">
+      <button type="button" class="btn btn-primary mt-4half" onclick="mostrarModalProj()">Adicionar</button>
+      <button type="button" class="btn btn-primary mt-4half" onclick="listarProjetos()">Listar</button>
+    </div>
+    <!-- Modal -->
+   <div class="modal fade modal-xl" id="modalAddProjeto" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Adicionar Cliente</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form class="row g-3">
+            <div class="col-md-6">
+              <label for="descProj" class="form-label">Descrição do Projeto:</label>
+              <input type="text" class="form-control" id="descProj">
+            </div>
+            <div class="col-md-6">
+              <select class="mt-4half align-self-xxl-stretch" name="tipoProj" id="tipoProj">Tipo:
+                <option value="0">Selecione um tipo</option>
+                <option value="Público">Público</option>
+                <option value="Privado">Privado</option>
+              </select>
+            </div>
+            <div class="col-md-6">
+              <select class="mt-4half align-self-xxl-stretch" name="clienteProj" id="clienteProj">Cliente:
+               
+              </select>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+              <button type="button" class="btn btn-success"  onclick="addProjeto()">Guardar</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>  
+  </div>
+
+  <br>
+
+  <div class="container">
+    <table class='table table-striped w-100 d-none' id='dataTClientes'>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>NIF</th>
+          <th>Nome</th>
+          <th>Localidade</th>
+          <th>E-Mail</th>
+          <th>Telefone</th>
+          <th>Remover</th>
+          <th>Alterar</th>
+        </tr>
+      </thead>
+      <tbody  id="tableClientes">
+
+      </tbody>
+      <tfoot>
+        <tr>
+          <td>
+            <button class="btn btn-danger" onclick="esconderTabela('dataTClientes');">Esconder</button>
+          </td>
+        </tr>
+      </tfoot>
+    </table>
+
+  </div>
+
+  <div class="container">
+    <table class='table table-striped w-100 d-none' id='dataTProjetos'>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Descrição</th>
+          <th>Tipo</th>
+          <th>Cliente</th>
+          <th>Remover</th>
+        </tr>
+      </thead>
+      <tbody  id="tableProjetos">
+
+      </tbody>
+      <tfoot>
+        <tr>
+          <td>
+            <button class="btn btn-danger" onclick="esconderTabela('dataTProjetos');">Esconder</button>
+          </td>
+        </tr>
+      </tfoot>
+    </table>  
+  </div>
+
+  
+   <!-- Modal -->
+<div class="modal fade modal-xl" id="editCliente" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Edição de Cliente</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form class="row g-3">
+          <div class="col-md-4">
+            <label for="nifEdit" class="form-label">NIF:</label>
+            <input type="number" class="form-control" id="nifEdit">
+          </div>
+          <div class="col-md-8">
+            <label for="nomeEdit" class="form-label">Nome</label>
+            <input type="text" class="form-control" id="nomeEdit">
+          </div>
+          <div class="col-md-6">
+            <label for="localEdit" class="form-label">Localidade</label>
+            <input type="text" class="form-control" id="localEdit">
+          </div>
+          <div class="col-md-6">
+            <label for="emailEdit" class="form-label">Email</label>
+            <input type="email" class="form-control" id="emailEdit">
+          </div>
+          <div class="col-md-4">
+            <label for="telEdit" class="form-label">Telefone:</label>
+            <input type="number" class="form-control" id="telEdit">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+        <button type="button" class="btn btn-success" id ="btnGuardaEdit">Guardar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+</body>
+
+</html>

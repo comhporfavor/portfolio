@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ficha 3 - 5415</title>
+  <script src="src/js/jquery.js"></script>
+  <script src="src/js/datatable.js"></script>
+  <script src="src/js/function.js"></script>
+  <script src="src/js/sweetalert.js"></script>
+  <script src="src/js/bootstrap.js"></script>
+  <link rel="stylesheet" href="src/css/bootstrap.css">
+  <link rel="stylesheet" href="src/css/sweetalert.css">
+  <link rel="stylesheet" href="src/css/animate.css">
+  <link rel="stylesheet" href="src/css/datatable.css">
+</head>
+
+<body>
+  <div class="container">
+    <h1>Ex1</h1>
+    <form class="row g-3">
+    <div class="col-md-6">
+      <label for="areaBase" class="form-label">Área da Base</label>
+      <input type="number" class="form-control" id="areaBase">
+    </div>
+    <div class="col-md-6">
+      <label for="altura" class="form-label">Altura</label>
+      <input type="number" class="form-control" id="altura">
+    </div>
+
+    <div class="col-md-6">
+      <label for="resultado" class="form-label">Resultado</label>
+      <input type="number" class="form-control" id="resultado" disabled>
+    </div>
+  
+    <div class="col-12">
+      <button type="button" class="btn btn-primary" onclick="CalculaVolume()">calcular</button>
+    </div>
+  </form>
+  </div>
+
+
+  <div class="container">
+    <h1>Ex2</h1>
+    <form class="row g-3">
+    <div class="col-md-6">
+      <label for="x" class="form-label">Valor de X</label>
+      <input type="number" class="form-control" id="x">
+    </div>
+    <div class="col-md-6">
+      <label for="y" class="form-label">Valor de Y</label>
+      <input type="number" class="form-control" id="y">
+    </div>
+
+    <div class="col-md-6">
+      <label for="z" class="form-label">Valor de Z</label>
+      <input type="number" class="form-control" id="z">
+    </div>
+
+    <div class="col-md-6">
+      <label for="resultado2" class="form-label">Resultado</label>
+      <input type="number" class="form-control" id="resultado2" disabled>
+    </div>
+  
+    <div class="col-md-6">
+      <label for="resultado3" class="form-label">Info</label>
+      <input type="text" class="form-control" id="resultado3" disabled>
+    </div>
+
+    <div class="col-12">
+      <button type="button" class="btn btn-primary" onclick="calculaExpressao()">calcular</button>
+    </div>
+  </form>
+  </div>
+
+
+  <div class="container">
+    <h1>Ex3</h1>
+    <form class="row g-3">
+    <div class="col-md-6">
+      <label for="qtd" class="form-label">Quantidade</label>
+      <input type="number" class="form-control" id="qtd">
+    </div>
+    <div class="col-md-4">
+      <label for="valor" class="form-label">Valor</label>
+      <input type="number" class="form-control" id="valor">
+    </div>
+
+    <div class="col-md-2 mt-5">
+      <button type="button" class="btn btn-primary" onclick="addSaldo()">Adicionar</button>
+    </div>
+
+    <div class="col-md-6">
+      <label for="saldo" class="form-label">Saldo</label>
+      <input type="number" class="form-control" id="saldo" disabled>
+    </div>
+  
+    <div class="col-md-6">
+      <label for="resultado3" class="form-label">Info</label>
+      <input type="text" class="form-control" id="resultado5" disabled>
+    </div>
+
+    <div class="col-12">
+      <button type="button" class="btn btn-primary" onclick="calculaSaldo1()">calcular</button>
+    </div>
+  </form>
+  </div>
+  
+
+</body>
+
+</html>

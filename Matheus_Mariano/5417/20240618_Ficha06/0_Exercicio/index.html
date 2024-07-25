@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ficha 6 - 5417</title>
+  <script src="src/js/jquery.js"></script>
+  <script src="src/js/datatable.js"></script>
+  <script src="src/js/function.js"></script>
+  <script src="src/js/sweetalert.js"></script>
+  <script src="src/js/bootstrap.js"></script>
+  <link rel="stylesheet" href="src/css/bootstrap.css">
+  <link rel="stylesheet" href="src/css/style.css">
+  <link rel="stylesheet" href="src/css/sweetalert.css">
+  <link rel="stylesheet" href="src/css/animate.css">
+  <link rel="stylesheet" href="src/css/datatable.css">
+</head>
+
+<header>
+  <div>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <div class="container-fluid bg-dark">
+        <div class="col-md-2">
+          <h3 class="pCinza">Ficha 06</h3>
+        </div>
+        <div class="col-md-4">
+          <a href="index.html" class="pagAtiva">Home</a> 
+          <a href="clubes.html">Clubes</a>
+          <a href="jogadores.html">Jogadores</a> 
+        </div>
+        <div class="col-md-6 mt-3">
+          <p class="pVermelho">Matheus Mariano</p>
+        </div>     
+      </div>
+    </nav>
+  </div>
+</header>
+
+<body>
+  <div class="container">
+
+    <div>
+      <h3>Listar Clubes</h3>
+      <button type="button" class="btn btn-primary mt-4half" onclick="listarClubes()">Listar</button>
+      <br>
+      <table class='table table-striped w-100 d-none' id='dataTClubes'>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Logotipo</th>
+            <th>Nome</th>
+            <th>Localidade</th>
+            <th>Ano de Fundação</th>
+            <th>E-Mail</th>
+            <th>Telefone</th>
+            <th>Remover</th>
+            <th>Alterar</th>
+          </tr>
+        </thead>
+        <tbody  id="tableClubes">
+
+        </tbody>
+        <tfoot>
+          <tr>
+            <td>
+              <button class="btn btn-danger" onclick="esconderTabela('dataTClubes');">Esconder</button>
+            </td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>  
+
+    <br><br>
+
+    <div>
+      <h3>Listar Jogadores</h3>
+      <button type="button" class="btn btn-primary mt-4half" onclick="listarJogadores()">Listar</button>
+      <br>
+      <table class='table table-striped w-100 d-none' id='dataTJogadores'>
+        <thead>
+          <tr>
+            <th>Nº Federação</th>
+            <th class="d-none">Nome_Clube</th>
+            <th>Clube</th>
+            <th>Foto</th>
+            <th>Nome</th>
+            <th>Idade</th>
+            <th>Morada</th>
+            <th>E-Mail</th>
+            <th>Telefone</th>
+            <th>Remover</th>
+            <th>Alterar</th>
+          </tr>
+        </thead>
+        <tbody  id="tableJogadores">
+
+        </tbody>
+        <tfoot>
+          <tr>
+            <td>
+              <button class="btn btn-danger" onclick="esconderTabela('dataTJogadores');">Esconder</button>
+            </td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+
+  </div>    
+
+  <!-- Modal Edição de Clube -->
+  <div class="modal fade" id="modalClubeEdit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title fs-5" id="exampleModalLabel">Editar Clube</h3>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <img class="img-responsive img-thumbnail" alt="logoClube" id="logoModal">
+          <form>
+            <div class="form-group">
+              <label for="nomeClubeEdit">Nome do Clube</label>
+              <input type="text" class="form-control" id="nomeClubeEdit" required>
+            </div>
+            <br>
+            <div class="form-group">
+              <label for="localClubeEdit">Localidade</label>
+              <input type="text" class="form-control" id="localClubeEdit" required>
+            </div>
+            <br>
+            <div class="form-group">
+              <label for="emailClubeEdit">Email de Contato</label>
+              <input type="email" class="form-control" id="emailClubeEdit" required>
+            </div>
+            <br>
+            <div class="form-group">
+              <label for="anoFundEdit">Ano de Fundação</label>
+              <input type="number" class="form-control" id="anoFundEdit" required>
+            </div>
+            <br>
+            <div class="form-group">
+              <label for="telClubeEdit">Contato de Telefone</label>
+              <input type="tel" class="form-control" id="telClubeEdit" required>
+            </div>
+            <br>
+            <div class="form-group">
+              <label for="logotipoEdit">Logotipo</label>
+              <input type="file" class="form-control-file" id="logotipoEdit" required>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <button type="button" class="btn btn-primary" id="btnGuardarEditClube">Guardar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Edição de Jogador -->
+  <div class="modal fade" id="modalJogadorEdit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Editar Jogador</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <img class="img-responsive img-thumbnail" alt="fotoJogador" id="fotoModal">
+          <form>
+            <div class="form-group">
+              <label for="numFedEdit">Nº Federativo</label>
+              <input type="text" class="form-control" id="numFedEdit" required>
+            </div>
+            <div class="form-group">
+              <label for="nomeJogEdit">Nome do Jogador</label>
+              <input type="text" class="form-control" id="nomeJogEdit" required>
+            </div>
+            <br>
+            <div class="form-group">
+              <label for="idadeJogEdit">Idade</label>
+              <input type="number" class="form-control" id="idadeJogEdit" required>
+            </div>
+            <br>
+            <div class="form-group">
+              <label for="moradaJogEdit">Morada</label>
+              <input type="text" class="form-control" id="moradaJogEdit" required>
+            </div>
+            <br>
+            <div class="form-group">
+              <label for="emailJogEdit">Email</label>
+              <input type="email" class="form-control" id="emailJogEdit" required>
+            </div>
+            <br>
+            <div class="form-group">
+              <label for="telJogEdit">Telefone</label>
+              <input type="tel" class="form-control" id="telJogEdit" required>
+            </div>
+            <br>
+            <div class="form-group">
+              <label for="selectClubeEdit">Clube</label>
+              <select class="form-control" id="selectClubeEdit" required>
+                <!-- As opções serão preenchidas posteriormente a partir da base de dados -->
+              </select>
+            </div>
+            <br>
+            <div class="form-group">
+              <label for="fotoJogEdit">Foto do Atleta</label>
+              <input type="file" class="form-control-file" id="fotoJogEdit" required>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <button type="button" class="btn btn-primary" id="btnGuardarEditJogador">Guardar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>

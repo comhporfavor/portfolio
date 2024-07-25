@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>5417 - Ficha 02</title>
+  <script src="src/js/jquery.js"></script>
+  <script src="src/js/datatable.js"></script>
+  <script src="src/js/function.js"></script>
+  <script src="src/js/sweetalert.js"></script>
+  <script src="src/js/bootstrap.js"></script>
+  <link rel="stylesheet" href="src/css/bootstrap.css">
+  <link rel="stylesheet" href="src/css/sweetalert.css">
+  <link rel="stylesheet" href="src/css/animate.css">
+  <link rel="stylesheet" href="src/css/datatable.css">
+</head>
+
+<body>
+  <div class="container">
+    <h3>Ex1</h3>
+    <form class="row g-3">
+      <div class="col-md-6">
+        <label for="nomeAluno" class="form-label">Nome do Aluno</label>
+        <input type="text" class="form-control" id="nomeAluno">
+      </div>
+      <div class="col-md-6">
+        <label for="nota1" class="form-label">Nota 1</label>
+        <input type="number" class="form-control" id="nota1">
+      </div>
+      <div class="col-md-6">
+        <label for="nota2" class="form-label">Nota 2</label>
+        <input type="number" class="form-control" id="nota2">
+      </div>
+      <div class="col-md-6">
+        <label for="nota3" class="form-label">Nota 3</label>
+        <input type="number" class="form-control" id="nota3">
+      </div>
+      <div class="col-md-6">
+        <label for="infoAluno" class="form-label">Nome do Aluno:</label>
+        <input type="text" class="form-control" id="infoAluno" disabled>
+      </div>
+      <div class="col-md-6">
+        <label for="media" class="form-label">Média das notas:</label>
+        <input type="text" class="form-control" id="media" disabled>
+      </div>
+      <div class="col-12">
+        <button type="button" class="btn btn-success" onclick="calculaMedia()">Calcular</button>
+      </div>
+    </form>
+  </div>
+
+  <br>
+  <br>
+
+  <div class="container">
+    <h3>Ex2</h3>
+    <form class="row g-3">
+      <div class="col-md-6">
+        <label for="dist" class="form-label">Distância em km</label>
+        <input type="number" class="form-control" id="dist">
+      </div>
+      <div class="col-md-6">
+        <label for="tempo" class="form-label">Tempo em horas</label>
+        <input type="number" class="form-control" id="tempo">
+      </div>
+      <div class="col-md-6">
+        <label for="vel" class="form-label">Velocidade:</label>
+        <input type="text" class="form-control" id="vel" disabled>
+      </div>
+      <div class="col-md-6">
+        <label for="coment" class="form-label">Comentário:</label>
+        <input type="text" class="form-control" id="coment" disabled>
+      </div>
+      <div class="col-12">
+        <button type="button" class="btn btn-success" onclick="calculaVelocidade()">Calcular</button>
+      </div>
+    </form>
+  </div>
+
+  <br>
+
+  <div class="container">
+    <h3>Ex3</h3>
+    <form class="row g-3">
+      <h5>Registrar Veiculo</h5>
+      <div class="col-md-6">
+        <label for="marca" class="form-label">Marca</label>
+        <input type="text" class="form-control" id="marca">
+      </div>
+      <div class="col-md-6">
+        <label for="matricula" class="form-label">Matricula</label>
+        <input type="text" class="form-control" id="matricula">
+      </div>
+      <div class="col-md-6">
+        <label for="kmsVeic" class="form-label">KMS rodados:</label>
+        <input type="number" class="form-control" id="kmsVeic">
+      </div>
+      <div class="col-6">
+        <button type="button" class="btn btn-success mt-4" onclick="registrarVeiculo()">Registrar</button>
+      </div>
+    </form>
+    <br>
+    <h5>Lista de Veículos</h5>
+    <button type="button" class="btn btn-success mt-4" onclick="listarVeiculos()">Listar</button>
+    <br>
+    <br>
+    <table class="table table-striped table-bordered table-hover" id="dataTVeiculos">
+      <thead>
+        <tr>
+          <th scope="col">Marca</th>
+          <th scope="col">Matrícula</th>
+          <th scope="col">Kms</th>
+        </tr>
+      </thead>
+      <tbody id="listaVeiculos">
+      </tbody>
+      <tfoot>
+        <caption><strong>Total de KMS: <span id="totalKms"></span></strong></caption>
+      </tfoot>
+    </table>
+  </div>
+
+  <br>
+
+</body>
+
+</html>

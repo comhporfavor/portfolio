@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ficha 3 - 5415</title>
+  <script src="src/js/jquery.js"></script>
+  <script src="src/js/datatable.js"></script>
+  <script src="src/js/function.js"></script>
+  <script src="src/js/sweetalert.js"></script>
+  <script src="src/js/bootstrap.js"></script>
+  <link rel="stylesheet" href="src/css/bootstrap.css">
+  <link rel="stylesheet" href="src/css/sweetalert.css">
+  <link rel="stylesheet" href="src/css/animate.css">
+  <link rel="stylesheet" href="src/css/datatable.css">
+
+</head>
+
+
+
+<body>
+
+  <div class="container">
+    <form class="row g-3">
+    <div class="col-md-6">
+      <label for="pNumero" class="form-label">Primero número</label>
+      <input type="number" class="form-control" id="pNumero">
+    </div>
+    <div class="col-md-6">
+      <label for="sNumero" class="form-label">Segundo Número</label>
+      <input type="number" class="form-control" id="sNumero">
+    </div>
+
+    <div class="col-md-6">
+      <label for="resultado" class="form-label">Resultado</label>
+      <select class="form-control" id="operacao">
+        <option value="-1">Escolha uma opção</option>
+        <option value="1">Soma</option>
+        <option value="2">Divisao</option>
+        <option value="3">Subtração</option>
+        <option value="4">Multiplicação</option>
+        <option value="5">Soma C/ Informação</option>
+      </select>
+    </div>
+
+    <div class="col-md-6">
+      <label for="resultado" class="form-label">Resultado</label>
+      <input type="number" class="form-control" id="resultado" disabled>
+    </div>
+  
+    <div class="col-12">
+      <button type="button" class="btn btn-primary" onclick="calcular()">calcular</button>
+    </div>
+  </form>
+  </div>
+  
+
+</body>
+
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ficha 3 - 5415</title>
+  <script src="src/js/jquery.js"></script>
+  <script src="src/js/datatable.js"></script>
+  <script src="src/js/utilizador.js"></script>
+  <script src="src/js/sweetalert.js"></script>
+  <script src="src/js/bootstrap.js"></script>
+  <link rel="stylesheet" href="src/css/bootstrap.css">
+  <link rel="stylesheet" href="src/css/sweetalert.css">
+  <link rel="stylesheet" href="src/css/animate.css">
+  <link rel="stylesheet" href="src/css/datatable.css">
+</head>
+
+<body>
+  <div class="container">
+    <h1>Ex1</h1>
+    <form class="row g-3">
+    <div class="col-md-6">
+      <label for="nomeparticipante" class="form-label">Nome</label>
+      <input type="text" class="form-control" id="nome">
+    </div>
+    <div class="col-md-6">
+      <label for="morada" class="form-label">Morada</label>
+      <input type="text" class="form-control" id="morada">
+    </div>
+    <div class="col-md-6">
+      <label for="telefone" class="form-label">Telefone</label>
+      <input type="tel" class="form-control" id="telefone">
+    </div>
+    <div class="col-12">
+      <button type="button" class="btn btn-primary" onclick="registaUser()">Registar</button>
+      
+    </div>
+  </form>
+  </div>
+
+  <div class="container">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Nome</th>
+          <th scope="col">Morada</th>
+          <th scope="col">Telefone</th>
+          <th scope="col">Remover</th>
+          <th scope="col">Editar</th>
+        </tr>
+      </thead>
+      <tbody id="listaUtilizador">
+      </tbody>
+    </table>
+
+  </div>
+
+
+  <!-- Modal -->
+<div class="modal fade" id="editUser" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form class="row g-3">
+          <div class="col-md-6">
+            <label for="nomeEdit" class="form-label">Nome</label>
+            <input type="text" class="form-control" id="nomeEdit">
+          </div>
+          <div class="col-md-6">
+            <label for="moradaEdit" class="form-label">Morada</label>
+            <input type="text" class="form-control" id="moradaEdit">
+          </div>
+          <div class="col-md-6">
+            <label for="telefoneEdit" class="form-label">Telefone</label>
+            <input type="tel" class="form-control" id="telefoneEdit">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+        <button type="button" class="btn btn-primary" id ="btnGuardaEdit">Guardar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+  
+
+
+  
+
+</body>
+
+</html>

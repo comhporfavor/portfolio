@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ficha 3 - 5415</title>
+  <script src="src/js/jquery.js"></script>
+  <script src="src/js/datatable.js"></script>
+  <script src="src/js/produto.js"></script>
+  <script src="src/js/sweetalert.js"></script>
+  <script src="src/js/bootstrap.js"></script>
+  <link rel="stylesheet" href="src/css/bootstrap.css">
+  <link rel="stylesheet" href="src/css/sweetalert.css">
+  <link rel="stylesheet" href="src/css/animate.css">
+  <link rel="stylesheet" href="src/css/datatable.css">
+</head>
+
+<body>
+  <div class="container">
+    <h1>Ex1</h1>
+    <form class="row g-3">
+      <div class="col-md-12">
+        <label for="refProduto" class="form-label">Referência</label>
+        <input type="text" class="form-control" id="refProduto">
+      </div>
+    <div class="col-md-12">
+      <label for="nomeProduto" class="form-label">Nome</label>
+      <input type="text" class="form-control" id="nomeProduto">
+    </div>
+    <div class="col-md-12">
+      <label for="descrProduto" class="form-label">Descrição</label>
+      <input type="text" class="form-control" id="descrProduto">
+    </div>
+    <div class="col-md-6">
+      <label for="precoProduto" class="form-label">Preço</label>
+      <input type="number" class="form-control" id="precoProduto">
+    </div>
+
+    <div class="col-md-6">
+      <label for="tipoProduto" class="form-label">Tipo de Produto</label>
+      <select class="form-select" aria-label="Default select example" id ="tipoProduto">
+      </select>
+    </div>
+
+    <div class="col-md-12">
+      <label for="imgProduto" class="form-label">Imagem</label>
+      <input type="file" class="form-control" id="imgProduto">
+    </div>
+
+    <div class="col-12">
+      <button type="button" class="btn btn-primary" onclick="registaProduto()">Registar</button>
+    </div>
+    
+  </form>
+  </div>
+
+  <div class="container" id="tableProdutos">
+
+  </div>
+
+
+  <!-- Modal -->
+  <div class="modal fade" id="modalEdit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Editar Produto</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form class="row g-3">
+            <div class="col-md-12">
+              <label for="refProdutoEdit" class="form-label">Referência</label>
+              <input type="text" class="form-control" id="refProdutoEdit">
+            </div>
+            <div class="col-md-12">
+              <label for="nomeProdutoEdit" class="form-label">Nome</label>
+              <input type="text" class="form-control" id="nomeProdutoEdit">
+            </div>
+            <div class="col-md-12">
+              <label for="descrProdutoEdit" class="form-label">Descrição</label>
+              <input type="text" class="form-control" id="descrProdutoEdit">
+            </div>
+            <div class="col-md-6">
+              <label for="precoProdutoEdit" class="form-label">Preço</label>
+             <input type="number" class="form-control" id="precoProdutoEdit">
+            </div>
+            <div class="col-md-6">
+              <label for="tipoProdutoEdit" class="form-label">Tipo de Produto</label>
+              <select class="form-select" aria-label="Default select example" id ="tipoProdutoEdit">
+              </select>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <button type="button" class="btn btn-primary" id="btnGuardarEdit">Guardar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>

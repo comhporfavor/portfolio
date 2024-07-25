@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>5415 - Ficha 01</title>
+  <script src="src/js/jquery.js"></script>
+  <script src="src/js/datatable.js"></script>
+  <script src="src/js/function.js"></script>
+  <script src="src/js/sweetalert.js"></script>
+  <script src="src/js/bootstrap.js"></script>
+  <link rel="stylesheet" href="src/css/bootstrap.css">
+  <link rel="stylesheet" href="src/css/sweetalert.css">
+  <link rel="stylesheet" href="src/css/animate.css">
+  <link rel="stylesheet" href="src/css/datatable.css">
+</head>
+
+<body>
+
+  <div class="container">
+    <form class="row g-3">
+    <div class="col-md-6">
+      <label for="areaBase" class="form-label">Área da Base</label>
+      
+      <input type="number" class="form-control" id="areaBase">
+    </div>
+    <div class="col-md-6">
+      <label for="altura" class="form-label">Altura</label>
+      <input type="number" class="form-control" id="altura">
+    </div>
+
+    <div class="col-md-6">
+      <label for="resultado" class="form-label">Resultado</label>
+      <input type="number" class="form-control" id="resultado" disabled>
+    </div>
+  
+    <div class="col-12">
+      <button type="button" class="btn btn-success" onclick="calcular()">calcular</button>
+    </div>
+  </form>
+  </div>
+  
+</body>
+
+</html>

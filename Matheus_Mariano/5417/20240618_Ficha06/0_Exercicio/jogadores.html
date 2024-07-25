@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ficha 6 - 5417</title>
+  <script src="src/js/jquery.js"></script>
+  <script src="src/js/datatable.js"></script>
+  <script src="src/js/function.js"></script>
+  <script src="src/js/sweetalert.js"></script>
+  <script src="src/js/bootstrap.js"></script>
+  <link rel="stylesheet" href="src/css/bootstrap.css">
+  <link rel="stylesheet" href="src/css/style.css">
+  <link rel="stylesheet" href="src/css/sweetalert.css">
+  <link rel="stylesheet" href="src/css/animate.css">
+  <link rel="stylesheet" href="src/css/datatable.css">
+</head>
+
+<header>
+  <div>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <div class="container-fluid bg-dark">
+        <div class="col-md-2">
+          <h3 class="pCinza">Ficha 06</h3>
+        </div>
+        <div class="col-md-4">
+          <a href="index.html">Home</a> 
+          <a href="clubes.html">Clubes</a>
+          <a href="jogadores.html" class="pagAtiva">Jogadores</a> 
+        </div>
+        <div class="col-md-6 mt-3">
+          <p class="pVermelho">Matheus Mariano</p>
+        </div>     
+      </div>
+    </nav>
+  </div>
+</header>
+
+<body>
+  <div class="container">
+    <h2>Registrar Jogador</h2>
+    <form>
+      <div class="form-group">
+        <label for="numFed">Nº Federativo</label>
+        <input type="text" class="form-control" id="numFed" placeholder="Digite o número federativo" required>
+      </div>
+      <br>
+      <div class="form-group">
+        <label for="nomeJog">Nome do Jogador</label>
+        <input type="text" class="form-control" id="nomeJog" placeholder="Digite o nome do jogador" required>
+      </div>
+      <br>
+      <div class="form-group">
+        <label for="idadeJog">Idade</label>
+        <input type="number" class="form-control" id="idadeJog" placeholder="Digite a idade" required>
+      </div>
+      <br>
+      <div class="form-group">
+        <label for="moradaJog">Morada</label>
+        <input type="text" class="form-control" id="moradaJog" placeholder="Digite a morada" required>
+      </div>
+      <br>
+      <div class="form-group">
+        <label for="emailJog">Email</label>
+        <input type="email" class="form-control" id="emailJog" placeholder="Digite o email" required>
+      </div>
+      <br>
+      <div class="form-group">
+        <label for="telJog">Telefone</label>
+        <input type="tel" class="form-control" id="telJog" placeholder="Digite o telefone" required>
+      </div>
+      <br>
+      <div class="form-group">
+        <label for="selectClube">Clube</label>
+        <select class="form-control" id="selectClube" required>
+          <!-- As opções serão preenchidas posteriormente a partir da base de dados -->
+        </select>
+      </div>
+      <br>
+      <div class="form-group">
+        <label for="fotoJog">Foto do Atleta</label>
+        <input type="file" class="form-control-file" id="fotoJog" required>
+      </div>
+      <br>
+      <button type="button" class="btn btn-primary" onclick="addJogador()">Registrar</button>
+    </form>
+  </div>
+</body>
+
+</html>

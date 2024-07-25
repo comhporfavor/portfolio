@@ -1,0 +1,9 @@
+Fatura de Mesa Mesa6
+
+Prato		Preço
+========================================
+Feijoada à Brasileira		7,89 €
+Açaí		6,79 €
+Feijão Tropeiro		6,99 €
+========================================
+Total: 21,67 €
