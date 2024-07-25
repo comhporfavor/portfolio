@@ -68,42 +68,51 @@ class Cliente {
         return json_encode($row);
     }
 
-    function gravarEdicaoCliente($oldNif, $nif, $nome, $morada, $telefone, $email, $oldEmail, $idade, $tipo){
+    function gravarEdicaoCliente($oldNif, $nif, $nome, $morada, $telefone, $email, $oldEmail, $idade, $tipo) {
         global $conn;
         $msg = "";
         $verifcareserva = "SELECT * FROM agendamento WHERE id_cliente = '$oldNif';";
         $validareserva = $conn->query($verifcareserva);
         if ($validareserva->num_rows > 0) {
             $msg = "Não é possível alterar dados do cliente enquanto existem reservas associadas!";
-        } else {
-            $sql = "UPDATE client SET nif='".$nif."', nome='".$nome."', morada='".$morada."', 
-                telefone='".$telefone."', email='".$email."', id_type = '".$tipo."' WHERE nif=".$oldNif;
-            if ($nif == $oldNif && $email == $oldEmail) {
-                if ($conn->query($sql) === TRUE) {
-                    $msg = "Cliente atualizado com sucesso.";
-                }
-            } else {
-                $verificanif = "SELECT * FROM cliente WHERE nif = '$nif';";
-                $validanif = $conn->query($verificanif);
-                $verificamail = "SELECT * FROM cliente WHERE email = '$email';";
-                $validamail = $conn->query($verificamail);
-                if ($validanif->num_rows > 0) {
-                    $msg = "Cliente já existe!";
-                } else if ($validamail->num_rows > 0) {
-                    $msg = "Email já existe!";
-                } else {
-                    if ($conn->query($sql) === TRUE) {
-                        $msg = "Cliente tualizado com sucesso.";
-                    } else {
-                        $msg = "Error: ". $sql. "<br>". $conn->error;
-                    }
-                }
-            $conn->close();
             return $msg;
+        }
+        if ($nif != $oldNif) {
+            $verificanif = "SELECT * FROM cliente WHERE nif = '$nif';";
+            $validanif = $conn->query($verificanif);
+            if ($validanif->num_rows > 0) {
+                $msg = "Cliente já existe!";
+                return $msg;
             }
         }
+        if ($email != $oldEmail) {
+            $verificamail = "SELECT * FROM cliente WHERE email = '$email';";
+            $validamail = $conn->query($verificamail);
+            if ($validamail->num_rows > 0) {
+                $msg = "Email já existe!";
+                return $msg;
+            }
+        }
+        $sql = "UPDATE cliente SET 
+                    nif='$nif', 
+                    nome='$nome', 
+                    morada='$morada', 
+                    telefone='$telefone', 
+                    email='$email', 
+                    idade='$idade', 
+                    id_tipo='$tipo'
+                WHERE nif='$oldNif'";
+        if ($conn->query($sql) === TRUE) {
+            $msg = "Cliente atualizado com sucesso.";
+        } else {
+            $msg = "Error: " . $sql . "<br>" . $conn->error;
+        }
+        return $msg;
     }
-
+    
 }
+
+
+
 
 ?>

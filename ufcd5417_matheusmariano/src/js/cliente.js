@@ -120,7 +120,10 @@ function gravarEdicaoCliente(nif, oldEmail) {
             processData: false,
         })
        .done(function (msg) {
+            console.log(msg);
             if (msg == "Cliente já existe!"){
+                alerta(msg, "Aviso!", 'warning', 'btn btn-warning');
+            } else if (msg == "Email já existe!"){
                 alerta(msg, "Aviso!", 'warning', 'btn btn-warning');
             } else {
                 alerta(msg, "Sucesso!",'success', 'btn btn-success');
@@ -134,4 +137,3 @@ function gravarEdicaoCliente(nif, oldEmail) {
         });
     }
 }
-// TESTE DE EDIÇÃO	
