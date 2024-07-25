@@ -87,7 +87,7 @@ function getInfoCliente(nif){
         $('#idadeClienteEdit').val(obj.idade);
         $('#selectTipoClienteEdit').val(obj.id_tipo);
         $('#btnGravaEditCliente').removeClass('btn-danger disabled').addClass('btn-success');
-        $('#btnGravaEditCliente').attr("onclick",'gravarEdicaoCliente('+obj.nif+', '+obj.email+')');
+        $('#btnGravaEditCliente').attr("onclick",'gravarEdicaoCliente("'+obj.nif+'", "'+obj.email+'")');
     })
     .fail(function (jqXHR, textStatus) {
         console.log("Request failed: " + textStatus);
