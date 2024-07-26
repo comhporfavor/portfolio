@@ -7,7 +7,7 @@ $Agendamento = new Agendamento();
 if ($_POST['op'] == 1) {
     $resultado = $Agendamento->addAgendamento(
         $_POST['id_cliente'],
-        $_POST['id_Agendamento'],
+        $_POST['id_voo'],
         $_POST['qtd_passageiros'],
         $_POST['valor_total']
     );

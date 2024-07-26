@@ -103,27 +103,27 @@ function addAgendamento($id_cliente, $id_voo, $qtd_passageiros, $valor_total) {
         return $flag;
     }
 
-   function validaAssentos($id_voo, $qtd_passageiros) {
-    global $conn;
-    $flag = true;
-    $sql = "SELECT COUNT(passageiros.id) AS total_ocupados
-            FROM passageiros
-            JOIN agendamento ON passageiros.id_agendamento = agendamento.id
-            WHERE agendamento.id_voo = $id_voo;";
-    $result = $conn->query($sql);
-    $maxLugar = "SELECT MAX(id) AS capacidade FROM lugares";
-    $maxLugarDisp = $conn->query($maxLugar);
-    if ($result && $maxLugarDisp) {
-        $row = $result->fetch_assoc();
-        $lugares = $maxLugarDisp->fetch_assoc();   
-        if ($lugares['capacidade'] - $row['total_ocupados'] < $qtd_passageiros) {
+    function validaAssentos($id_voo, $qtd_passageiros) {
+        global $conn;
+        $flag = true;
+        $sql = "SELECT COUNT(passageiros.id) AS total_ocupados
+                FROM passageiros
+                JOIN agendamento ON passageiros.id_agendamento = agendamento.id
+                WHERE agendamento.id_voo = $id_voo;";
+        $result = $conn->query($sql);
+        $maxLugar = "SELECT MAX(id) AS capacidade FROM lugares";
+        $maxLugarDisp = $conn->query($maxLugar);
+        if ($result && $maxLugarDisp) {
+            $row = $result->fetch_assoc();
+            $lugares = $maxLugarDisp->fetch_assoc();   
+            if ($lugares['capacidade'] - $row['total_ocupados'] < $qtd_passageiros) {
+                $flag = false;
+            }
+        } else {
             $flag = false;
         }
-    } else {
-        $flag = false;
+        return $flag;
     }
-    return $flag;
-}
 
     function atribuiLugares($id_agendamento, $id_voo, $qtd_passageiros) {
         global $conn;
