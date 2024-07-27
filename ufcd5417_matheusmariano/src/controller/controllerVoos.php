@@ -20,7 +20,7 @@ if ($_POST['op'] == 2) {
 }
 
 if ($_POST['op'] == 3) {
-    $resultado = $Voo->getInfoVoo($_POST['nif']);
+    $resultado = $Voo->getInfoVoo($_POST['id']);
     echo ($resultado);
 }
 

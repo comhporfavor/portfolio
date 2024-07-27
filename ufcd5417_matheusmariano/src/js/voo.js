@@ -10,7 +10,7 @@ function addVoo() {
         alerta("Selecione um Estado!", "Atenção!", 'error', 'btn btn-danger');
     } else {
         let dados = new FormData();
-        dados.append('descricao', $('#descricaoVoo').val());
+        dados.append('descricao', $('#descVoo').val());
         dados.append("id_aviao", id_aviao);
         dados.append("id_destino", id_destino);
         dados.append("estado", estado);
