@@ -32,7 +32,11 @@ class Voo {
                 $msg .= "<td>".$row['descricao']."</td>";
                 $msg .= "<td>".$row['aviaoVoo']."</td>";
                 $msg .= "<td>".$row['destinoVoo']."</td>";
-                $msg .= "<td>".$row['estado']."</td>";
+                if ($row['estado'] == 0) {
+                    $msg .= "<td>Ativo</td>";
+                } else if ($row['estado'] == 1){
+                    $msg .= "<td>Bloqueado</td>";
+                }
                 $msg .= "<td><button type='button' class='btn btn-warning' 
                     onclick ='getInfoVoo(".$row['id'].")'><i class='fa fa-pencil'></i></button></td>";
                 $msg .= "<td><button type='button' class='btn btn-danger'
@@ -51,7 +55,7 @@ class Voo {
     function getInfoVoo($id) {
         global $conn;
         $msg = "";
-        $sql = "SELECT voo.*, aviao.matricula AS aviaoVoo, destino.localidade AS destinoVoo 
+        $sql = "SELECT voo.*, aviao.id AS aviaoVoo, destino.id AS destinoVoo 
             FROM voo, aviao, destino 
             WHERE voo.id = '$id' AND voo.id_aviao = aviao.id AND voo.id_destino = destino.id;";
         $result = $conn->query($sql);
