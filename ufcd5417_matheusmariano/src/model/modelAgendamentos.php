@@ -16,18 +16,17 @@ function addAgendamento($id_cliente, $id_voo, $qtd_passageiros, $valor_total) {
     } else {
         $sql = "INSERT INTO agendamento (id_cliente, id_voo, qtd_passageiros, valor_total) 
                 VALUES ('$id_cliente', '$id_voo', '$qtd_passageiros', '$valor_total')"; 
-        if ($conn->query($sql) === TRUE) {
-            $id_agendamento = $conn->insert_id;
-            $this->atribuiLugares($id_agendamento, $id_voo, $qtd_passageiros);
-            $msg = "Agendamento registrado com sucesso.";
-        } else {
-            $msg = "Error: " . $sql . "<br>" . $conn->error;
+            if ($conn->query($sql) === TRUE) {
+                $id_agendamento = $conn->insert_id;
+                $this->atribuiLugares($id_agendamento, $id_voo, $qtd_passageiros);
+                $msg = "Agendamento registrado com sucesso.";
+            } else {
+                $msg = "Error: " . $sql . "<br>" . $conn->error;
+            }
         }
+        $conn->close();
+        return $msg;
     }
-    $conn->close();
-    return $msg;
-}
-
 
     function listarAgendamentos($id_voo){
         global $conn;
@@ -150,7 +149,6 @@ function addAgendamento($id_cliente, $id_voo, $qtd_passageiros, $valor_total) {
             }
         }
     }
-
     
 }
 
