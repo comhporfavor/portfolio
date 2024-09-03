@@ -1,14 +1,14 @@
 $(document).ready(function() {
-    let whereAmI = location.pathname;
+    let whereAmI = location.pathname.split("/").pop();
 
-    let pagRegCliente = "/Matheus_Mariano/5417/20240703_Ficha08(Avaliacao)/registrar-clientes.php";
-    let pagListCliente = "/Matheus_Mariano/5417/20240703_Ficha08(Avaliacao)/listar-clientes.php";
-    let pagRegPratos = "/Matheus_Mariano/5417/20240703_Ficha08(Avaliacao)/registrar-pratos.php";
-    let pagListPratos = "/Matheus_Mariano/5417/20240703_Ficha08(Avaliacao)/listar-pratos.php";
-    let pagRegReservas = "/Matheus_Mariano/5417/20240703_Ficha08(Avaliacao)/registrar-reservas.php";
-    let pagListReservas = "/Matheus_Mariano/5417/20240703_Ficha08(Avaliacao)/listar-reservas.php";
-    let pagRegPedidos = "/Matheus_Mariano/5417/20240703_Ficha08(Avaliacao)/registrar-pedidos.php";
-    let pagListarPedidos = "/Matheus_Mariano/5417/20240703_Ficha08(Avaliacao)/listar-pedidos.php";
+    let pagRegCliente = "registrar-clientes.php";
+    let pagListCliente = "listar-clientes.php";
+    let pagRegPratos = "registrar-pratos.php";
+    let pagListPratos = "listar-pratos.php";
+    let pagRegReservas = "registrar-reservas.php";
+    let pagListReservas = "listar-reservas.php";
+    let pagRegPedidos = "registrar-pedidos.php";
+    let pagListarPedidos = "listar-pedidos.php";
 
     let atvPagina = 'active pagAtiva';
 
