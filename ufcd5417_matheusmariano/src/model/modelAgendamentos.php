@@ -47,7 +47,7 @@ function addAgendamento($id_cliente, $id_voo, $qtd_passageiros, $valor_total) {
                 $msg .= "<td><button type='button' class='btn btn-warning' 
                     onclick ='getInfoAgendamento(".$row['id'].")'><i class='fa fa-pencil'></i></button></td>";
                 $msg .= "<td><button type='button' class='btn btn-danger'
-                    onclick ='excluirAgendamento(".$row['id'].")'><i class='fa fa-trash'></button></td>";    
+                    onclick ='excluirAgendamento(".$row['id'].")'><i class='fa fa-trash'></i></button></td>";    
                 $msg .= "</tr>";
             }
         } else {
