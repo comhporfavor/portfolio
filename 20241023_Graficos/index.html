@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Gráficos</title>
+  <a href="http://localhost/portfolio/20241023_Graficos/veterinaria.html">Gráficos Clinica Veterinária</a>
+</head>
+<body>
+  <br><br><br>
+  <label>Produto:</label>
+  <select id="produtos" onchange="linhas(this.value)">
+  </select>
+  <br>
+
+<div style="width:50%">
+  <canvas id="line"></canvas>
+</div>
+<br>
+<label>Ano:</label>
+<select onchange="barras(this.value)">
+  <option>Escolha um Ano</option>
+  <option value="2021">2021</option>
+  <option value="2022">2022</option>
+</select>
+<br>
+<div style="width:50%">
+  <canvas id="bar"></canvas>
+</div>
+
+</body>
+<script src="src/js/jquery.js"></script>
+<script src="src/js/chart.js"></script>
+<script src="src/js/mygraph.js"></script>
+
+</html>

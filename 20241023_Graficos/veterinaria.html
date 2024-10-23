@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Gráficos</title>
+  <a href="http://localhost/portfolio/20241023_Graficos/index.html">Home</a>
+</head>
+<body>
+  <br><br><br>
+  <label>Veterinários: </label>
+  <select id="selectVeterinario" onchange="linhas(this.value)">
+  </select>
+  <br>
+
+<div style="width:50%">
+  <canvas id="line"></canvas>
+</div>
+<br>
+<label>Consultas: </label>
+<select id="selectAnimal" onchange="barras(this.value)">
+</select>
+<br>
+<div style="width:50%">
+  <canvas id="bar"></canvas>
+</div>
+
+</body>
+<script src="src/js/jquery.js"></script>
+<script src="src/js/chart.js"></script>
+<script src="src/js/mygraph.js"></script>
+<script src="src/js/mygraphVet.js"></script>
+
+</html>
