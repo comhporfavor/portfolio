@@ -27,15 +27,15 @@ function lineVet(veterinarios, datas) {
   }
 }
 
-function bar(precos, datas) {
+function bar(valores, datas) {
 
-  let label = 'Total Orçamentos';
+  let label = 'Total Consultas';
 
   const data = {
     labels: datas,
     datasets: [{
       label: label,
-      data: precos,
+      data: valores,
       backgroundColor: [
         'rgba(255, 99, 132, 0.2)',
         'rgba(255, 159, 64, 0.2)',
